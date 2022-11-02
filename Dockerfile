@@ -1,7 +1,5 @@
 FROM ubuntu:focal
 
-ARG DEVUSER devuser
-
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update \
  && apt-get -y install --no-install-recommends build-essential g++ \
@@ -14,7 +12,3 @@ RUN git clone https://github.com/Kitware/CMake.git -b v3.24.3 \
  && cd CMake && ./configure --prefix=/usr && make && make install \
  && make clean && cd .. && rm -rf CMake
 
-ENV DEVUSER=${DEVUSER}
-RUN adduser --uid 1000 --disabled-password --gecos "" ${DEVUSER} \
-    && echo "${DEVUSER} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${DEVUSER}
-USER ${DEVUSER}
