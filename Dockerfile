@@ -3,7 +3,7 @@ FROM ubuntu:focal
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update \
  && apt-get -y install --no-install-recommends build-essential \
-    git openssl libssl-dev wget \
+    git ca-certificate openssl libssl-dev wget \
  && apt-get clean
 
 WORKDIR /builds
