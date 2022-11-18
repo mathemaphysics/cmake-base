@@ -8,6 +8,6 @@ RUN apt-get -y update \
 
 WORKDIR /builds
 RUN git clone https://github.com/Kitware/CMake.git -b v3.24.3 \
- && cd CMake && ./configure --prefix=/usr && make && make install \
+ && cd CMake && ./configure --prefix=/usr/local && make && make install \
  && make clean && cd .. && rm -rf CMake
 
